@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ZSSN_Octoco_technical_assessment.Services;
 using SurvivorsTracking.Models;
+using ZSSN_Octoco_technical_assessment.Repository;
 
 namespace SurvivorsTracking.Controllers
 {
@@ -9,11 +10,11 @@ namespace SurvivorsTracking.Controllers
     [Route("api/[controller]")]
     public class SurvivorController: Controller
     {
-        private readonly SurvivorContext _mongoDBService;
+        private readonly SurvivorRepository _survivorRepository;
 
-        public SurvivorController(SurvivorContext mongoDBService)
+        public SurvivorController(SurvivorRepository survivorRepository)
         {
-            _mongoDBService = mongoDBService;
+            _survivorRepository= survivorRepository;
         }
 
         [HttpGet]
@@ -22,7 +23,7 @@ namespace SurvivorsTracking.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Survivor survivor) 
         {
-            await _mongoDBService.CreateAsync(survivor);
+            await _survivorRepository.CreateAsync(survivor);
             return CreatedAtAction(nameof(Get), new { id = survivor.Id }, survivor);
         }
 

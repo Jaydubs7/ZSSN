@@ -21,15 +21,5 @@ namespace ZSSN_Octoco_technical_assessment.Services
 
         public IMongoCollection<Survivor> survivors => _db.GetCollection<Survivor>("survivor");
 
-        public async Task<List<Survivor>> GetAsync() 
-        {
-            throw new NotImplementedException();
-        }
-        public async Task CreateAsync(Survivor playlist) 
-        {
-            await survivors.InsertOneAsync(playlist);
-            return;
-        }
-
     }
 }
