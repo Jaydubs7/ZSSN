@@ -17,10 +17,10 @@ namespace ZSSN_Octoco_technical_assessment.Repository
         {
             throw new NotImplementedException();
         }
-        public async Task CreateAsync(Survivor playlist)
+        public async Task CreateAsync(Survivor survivor)
         {
-            await _survivorContext.survivors.InsertOneAsync(playlist);
-            return;
+            Console.Write("At Repo create....");
+            await _survivorContext.survivors.InsertOneAsync(survivor);
         }
     }
 }

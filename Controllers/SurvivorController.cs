@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ZSSN_Octoco_technical_assessment.Services;
 using SurvivorsTracking.Models;
 using ZSSN_Octoco_technical_assessment.Repository;
+using ZSSN_Octoco_technical_assessment.IRepository;
 
 namespace SurvivorsTracking.Controllers
 {
@@ -10,11 +11,11 @@ namespace SurvivorsTracking.Controllers
     [Route("api/[controller]")]
     public class SurvivorController: Controller
     {
-        private readonly SurvivorRepository _survivorRepository;
+        private readonly ISurvivorRepository _survivorRepository;
 
-        public SurvivorController(SurvivorRepository survivorRepository)
+        public SurvivorController(ISurvivorRepository survivorRepository)
         {
-            _survivorRepository= survivorRepository;
+            _survivorRepository = survivorRepository;
         }
 
         [HttpGet]

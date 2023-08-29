@@ -11,12 +11,10 @@ namespace ZSSN_Octoco_technical_assessment.Services
     {
         private readonly IMongoDatabase _db;
 
-        
-
         public SurvivorContext(IOptions<MongoDbSettings> mongoDBSettings)
         {
             MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
-            IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
+            _db = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
         }
 
         public IMongoCollection<Survivor> survivors => _db.GetCollection<Survivor>("survivor");
