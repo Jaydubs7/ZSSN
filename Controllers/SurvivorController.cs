@@ -38,6 +38,13 @@ namespace SurvivorsTracking.Controllers
                 return BadRequest();
         }
 
+        [HttpPost("{id}/infected")]
+        public async Task<IActionResult> FlagInfected(string id) 
+        { 
+            await _survivorService.FlagInfectedSurvivor(id);
+            return Ok(id);
+        }
+
         [HttpPut("{id}/location")]
         
         public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) 
@@ -45,13 +52,5 @@ namespace SurvivorsTracking.Controllers
             await _survivorService.UpdateLocation(id, newLocation); 
             return Ok(id);
         }
-
-        [HttpPost("{id}/infected")]
-        public async Task<IActionResult> FlagInfected(string id) 
-        { 
-            await _survivorService.FlagInfectedSurvivor(id);
-            return AcceptedAtAction(id);
-        }
-
     }
 }
