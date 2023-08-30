@@ -17,8 +17,8 @@ namespace SurvivorsTracking.Models
         public Location LastLocation { get; set; }
         public List<Item> Inventory { get; set; }
 
-        public bool Infected { get; set; }
-
+        public bool Infected { get; set; } = false;
+        
         public Survivor()
         {
             this.Id = ObjectId.GenerateNewId().ToString();

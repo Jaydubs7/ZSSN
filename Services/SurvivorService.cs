@@ -34,7 +34,8 @@ namespace ZSSN_Octoco_technical_assessment.Services
 
         public async Task FlagInfectedSurvivor(string id)
         {
-            throw new NotImplementedException();
+            await _survivorRepository.SetInfected(id);
+            return;
         }
     }
 }

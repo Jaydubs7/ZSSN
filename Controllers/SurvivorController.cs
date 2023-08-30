@@ -47,7 +47,11 @@ namespace SurvivorsTracking.Controllers
         }
 
         [HttpPost("{id}/infected")]
-        public async Task<IActionResult> FlagInfected(string id) { throw new NotImplementedException(); }
+        public async Task<IActionResult> FlagInfected(string id) 
+        { 
+            await _survivorService.FlagInfectedSurvivor(id);
+            return AcceptedAtAction(id);
+        }
 
     }
 }

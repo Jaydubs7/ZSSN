@@ -39,5 +39,12 @@ namespace ZSSN_Octoco_technical_assessment.Repository
             Survivor survivor = await _survivorContext.survivors.Find(s => s.Id == id).FirstOrDefaultAsync();
             return survivor;
         }
+
+        public async Task SetInfected(string id) 
+        {
+            var filter = Builders<Survivor>.Filter.Eq(s => s.Id, id);
+            var update = Builders<Survivor>.Update.Set(s => s.Infected, true);
+            await _survivorContext.survivors.UpdateOneAsync(filter, update);
+        }
     }
 }
