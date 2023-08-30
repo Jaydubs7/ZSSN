@@ -6,9 +6,10 @@ using ZSSN_Octoco_technical_assessment.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
-//builder.Services.AddSingleton<SurvivorContext>();
+
 builder.Services.AddTransient<ISurvivorContext, SurvivorContext>();
 builder.Services.AddTransient<ISurvivorRepository, SurvivorRepository>();
+builder.Services.AddSingleton<SurvivorService>();
 // Add services to the container.
 
 builder.Services.AddControllers();

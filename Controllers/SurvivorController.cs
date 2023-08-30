@@ -13,13 +13,18 @@ namespace SurvivorsTracking.Controllers
     {
         private readonly ISurvivorRepository _survivorRepository;
 
-        public SurvivorController(ISurvivorRepository survivorRepository)
+        private SurvivorService _survivorService;
+
+        public SurvivorController(SurvivorService survivorService)
         {
-            _survivorRepository = survivorRepository;
+            _survivorService = survivorService;
         }
 
         [HttpGet]
-        public async Task<List<Survivor>> Get() { throw new NotImplementedException(); }
+        public async Task<List<Survivor>> Get() 
+        { 
+            return await _survivorService.GetAllSurvivors(); 
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Survivor survivor) 
@@ -31,6 +36,8 @@ namespace SurvivorsTracking.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) { throw new NotImplementedException(); }
 
+        [HttpPost("{id}")]
+        public async Task<IActionResult> FlagInfected(string id) { throw new NotImplementedException(); }
 
     }
 }
