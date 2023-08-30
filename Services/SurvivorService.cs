@@ -28,7 +28,8 @@ namespace ZSSN_Octoco_technical_assessment.Services
 
         public async Task UpdateLocation(string id, Location location)
         {
-            throw new NotImplementedException();
+            await _survivorRepository.UpdateOneLocationAsync(id, location);
+            return;
         }
 
         public async Task FlagInfectedSurvivor(string id)

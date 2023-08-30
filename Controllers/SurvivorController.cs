@@ -38,11 +38,15 @@ namespace SurvivorsTracking.Controllers
                 return BadRequest();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}/location")]
         
-        public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) { throw new NotImplementedException(); }
+        public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) 
+        { 
+            await _survivorService.UpdateLocation(id, newLocation); 
+            return Ok(id);
+        }
 
-        [HttpPost("{id}")]
+        [HttpPost("{id}/infected")]
         public async Task<IActionResult> FlagInfected(string id) { throw new NotImplementedException(); }
 
     }
