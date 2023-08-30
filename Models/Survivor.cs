@@ -1,5 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace SurvivorsTracking.Models
@@ -7,62 +9,32 @@ namespace SurvivorsTracking.Models
     public class Survivor
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; private set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public Location LastLocation { get; set; }
         public List<Item> Inventory { get; set; }
 
-        private string _name;
-        private int _age;
-        private Gender _gender;
-        private Location _location;
-        private List<Item> _inventory;
-        private bool _infected;
+        public bool Infected { get; set; }
 
-        public Survivor(string name, int age, Gender gender, Location lastLocation, List<Item> inventory)
+        public Survivor()
         {
-            _name = name;
-            _age = age;
-            _gender = gender;
-            LastLocation = lastLocation;
-            _inventory = inventory;
-            _name = name;
-            _age = age;
-            _gender = gender;
-            _location = lastLocation;
-            _inventory = inventory;
-            _infected = false;
-        }
-
-        public List<Survivor> FetchSurvivors()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Survivor UpdateSurvivorLocation(Location location)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void FlagInfected()
-        {
-            _infected = true;
+            this.Id = ObjectId.GenerateNewId().ToString();
         }
     }
 
-
     public class Item
     {
-        private string _name;
-        private int _amount;
+        public string Name { get; set; }   
+        public int Amount { get; set; }
     }
 
     public class Location
     {
-        private int _latitude;
-        private int _longitude;
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
     public enum Gender
