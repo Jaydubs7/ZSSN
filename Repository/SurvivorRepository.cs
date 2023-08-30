@@ -25,8 +25,7 @@ namespace ZSSN_Octoco_technical_assessment.Repository
 
         public async Task<List<Survivor>> GetAllAsync()
         {
-            var filter = Builders<Survivor>.Filter.Empty;
-            List<Survivor> survivors = await _survivorContext.survivors.FindAsync<Survivor>(filter).Result.ToListAsync();
+            List<Survivor> survivors = await _survivorContext.survivors.FindAsync<Survivor>(_ => true).Result.ToListAsync();
             return survivors;
         }
 
