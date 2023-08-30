@@ -29,8 +29,13 @@ namespace SurvivorsTracking.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Survivor survivor) 
         {
-            await _survivorRepository.CreateAsync(survivor);
-            return CreatedAtAction(nameof(Get), new { id = survivor.Id }, survivor);
+            if (survivor != null)
+            {
+                await _survivorService.AddSurvivor(survivor);
+                return CreatedAtAction(nameof(Get), survivor);
+            }
+            else 
+                return BadRequest();
         }
 
         [HttpPut("{id}")]
