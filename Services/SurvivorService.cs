@@ -21,8 +21,9 @@ namespace ZSSN_Octoco_technical_assessment.Services
         }
         //Returns all survivors in alphabetical order
         public async Task<List<Survivor>> GetAllSurvivors() 
-        { 
-            return await _survivorRepository.GetAllAsync();
+        {
+            List<Survivor> orderedSurvivors = _survivorRepository.GetAllAsync().Result.OrderBy(s => s.Name).ToList();
+            return orderedSurvivors;
         }
 
         public async Task UpdateLocation(string id, Location location)
