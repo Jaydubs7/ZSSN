@@ -39,6 +39,7 @@ namespace SurvivorsTracking.Controllers
         }
 
         [HttpPut("{id}")]
+        
         public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) { throw new NotImplementedException(); }
 
         [HttpPost("{id}")]
