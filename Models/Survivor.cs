@@ -10,15 +10,16 @@ namespace SurvivorsTracking.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; private set; }
+        public string? Id { get; private set; }
+        [StringLength(maximumLength: 50, MinimumLength = 1, ErrorMessage = "Name should contain less than 50 and more than 1 character.")]
         public string Name { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public Location LastLocation { get; set; }
         public List<Item> Inventory { get; set; }
 
-        public bool Infected { get; set; } = false;
-        
+        public bool? Infected { get; set; } = false;
+
         public Survivor()
         {
             this.Id = ObjectId.GenerateNewId().ToString();
