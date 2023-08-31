@@ -14,17 +14,9 @@ namespace SurvivorsTracking.Models
         [StringLength(maximumLength: 50, MinimumLength = 1, ErrorMessage = "Name should contain less than 50 and more than 1 character.")]
         public string Name { get; set; }
 
-        [Required]
         public int Age { get; set; }
-
-        [Required]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Gender Gender { get; set; }
-
-        [Required]
         public Location LastLocation { get; set; }
-
-        
         public List<Item> Inventory { get; set; }
 
         public bool? Infected { get; set; } = false;
@@ -37,9 +29,7 @@ namespace SurvivorsTracking.Models
 
     public class Item
     {
-        [Required]
         public string Name { get; set; }   
-        [Required]
         public int Amount { get; set; }
     }
 
