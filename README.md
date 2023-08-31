@@ -3,10 +3,10 @@
 ## Endpoints
 
 ### [Get] api/survivor 
--Fetches all survivors, displaying id, name, age, gender and last location
+- Fetches all survivors, displaying id, name, age, gender and last location
 
 ### [Post] api/survivor
--Add a survivor by defining the following model in the request body:
+- Add a survivor by defining the following model in the request body:
 ```json
 {
 	"name": "John",
@@ -15,15 +15,25 @@
 	"lastLocation": {
 		"latitude": -10.001,
 		"longitude": 30.323
-	}
+	},
+	"inventory": [
+		{
+			"name": "Water-5L",
+			"amount": 1
+		},
+		{
+			"name": "Soup Can",
+			"amount": 3
+		}
+	]
 }
 ```
 
 ### [Post] api/survivor/:id/infected
--Flag a  survivor as infected. Use the survivor id from the [Get] survivor endpoint here to flag the specific survivor.
+- Flag a  survivor as infected. Use the survivor id from the [Get] survivor endpoint here to flag the specific survivor.
 
 ### [Put] api/survivor/:id/location
--Update the last location of a survivor by id. Use the following model in the request body:
+- Update the last location of a survivor by id. Use the following model in the request body:
 ```json
 {
   "latitude": 90,
