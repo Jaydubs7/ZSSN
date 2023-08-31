@@ -13,6 +13,7 @@ namespace SurvivorsTracking.Models
         public string? Id { get; private set; }
         [StringLength(maximumLength: 50, MinimumLength = 1, ErrorMessage = "Name should contain less than 50 and more than 1 character.")]
         public string Name { get; set; }
+
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public Location LastLocation { get; set; }
@@ -34,7 +35,9 @@ namespace SurvivorsTracking.Models
 
     public class Location
     {
+        [Range(-90, 90)]
         public double Latitude { get; set; }
+        [Range(-180, 180)]
         public double Longitude { get; set; }
     }
 

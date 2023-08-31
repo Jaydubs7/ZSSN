@@ -11,7 +11,6 @@ namespace SurvivorsTracking.Controllers
     [Route("api/[controller]")]
     public class SurvivorController: Controller
     {
-        private readonly ISurvivorRepository _survivorRepository;
 
         private SurvivorService _survivorService;
 
@@ -29,13 +28,13 @@ namespace SurvivorsTracking.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Survivor survivor) 
         {
-            if (survivor != null)
+            if (ModelState.IsValid)
             {
                 await _survivorService.AddSurvivor(survivor);
                 return CreatedAtAction(nameof(Get), survivor);
             }
             else 
-                return BadRequest();
+                return BadRequest(ModelState);
         }
 
         [HttpPost("{id}/infected")]
@@ -49,8 +48,13 @@ namespace SurvivorsTracking.Controllers
         
         public async Task<IActionResult> UpdateLocation(string id, [FromBody] Location newLocation) 
         { 
-            await _survivorService.UpdateLocation(id, newLocation); 
-            return Ok(id);
+            if (ModelState.IsValid)
+            {
+                await _survivorService.UpdateLocation(id, newLocation); 
+                return Ok(id);
+            }
+            else 
+                return BadRequest(ModelState);
         }
     }
 }
