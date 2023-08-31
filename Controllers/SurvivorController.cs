@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ZSSN_Octoco_technical_assessment.Services;
 using SurvivorsTracking.Models;
-using ZSSN_Octoco_technical_assessment.Repository;
-using ZSSN_Octoco_technical_assessment.IRepository;
 
 namespace SurvivorsTracking.Controllers
 {

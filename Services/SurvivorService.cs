@@ -1,9 +1,7 @@
 ﻿using SurvivorsTracking.Models;
 using ZSSN_Octoco_technical_assessment.IRepository;
-using ZSSN_Octoco_technical_assessment.Repository;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ZSSN_Octoco_technical_assessment.Services
 {
