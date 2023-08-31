@@ -13,8 +13,8 @@
 	"age": 20,
 	"gender": "Male",
 	"lastLocation": {
-		latitude: -10.001,
-		longitude: 30.323
+		"latitude": -10.001,
+		"longitude": 30.323
 	}
 }
 ```
