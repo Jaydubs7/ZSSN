@@ -1,11 +1,11 @@
 # ZSSN (Zombie Survival Social Network)
 
-##Endpoints
+## Endpoints
 
-###[Get] api/survivor 
+### [Get] api/survivor 
 -Fetches all survivors, displaying id, name, age, gender and last location
 
-###[Post] api/survivor
+### [Post] api/survivor
 -Add a survivor by defining the following model in the request body:
 ```json
 {
@@ -19,10 +19,10 @@
 }
 ```
 
-###[Post] api/survivor/:id/infected
+### [Post] api/survivor/:id/infected
 -Flag a  survivor as infected. Use the survivor id from the [Get] survivor endpoint here to flag the specific survivor.
 
-###[Put] api/survivor/:id/location
+### [Put] api/survivor/:id/location
 -Update the last location of a survivor by id. Use the following model in the request body:
 ```json
 {
